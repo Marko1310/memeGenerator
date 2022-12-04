@@ -5,7 +5,7 @@ const Header = () => {
     <header>
       <img className="header--img" src={troll} alt="meme"></img>
       <h1 className="header--title">Meme Generator</h1>
-      <p className="header--desc">React Curse - Project</p>
+      <p className="header--desc">React Course - Project</p>
     </header>
   );
 };

@@ -61,3 +61,14 @@ header {
   font-size: 16px;
   font-weight: 700;
 }
+
+.form--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.meme--image {
+  padding: 0px 30px;
+  max-width: 100%;
+}
