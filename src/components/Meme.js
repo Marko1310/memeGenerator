@@ -1,6 +1,5 @@
 import React from "react";
-import memesData from "../memesData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Meme = () => {
   const [meme, setMeme] = useState({
@@ -9,16 +8,23 @@ const Meme = () => {
     randomImage: "https://i.imgflip.com/1bh3.jpg",
   });
 
-  const [allMemeImages, setAllMemeImages] = useState(memesData);
+  const [allMemeImages, setAllMemeImages] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setAllMemeImages(data.data.memes));
+  }, []);
 
   let getMemeImage = function () {
-    const length = allMemeImages.data.memes.length;
+    meme.topText = "";
+    meme.bottomText = "";
+
+    const length = allMemeImages.length;
     const num = Math.floor(Math.random() * length);
     setMeme((meme) => {
-      return { ...meme, randomImage: allMemeImages.data.memes[num].url };
+      return { ...meme, randomImage: allMemeImages[num].url };
     });
-
-    console.log(meme.randomImage);
   };
 
   const changeText = function (event) {
@@ -37,6 +43,7 @@ const Meme = () => {
             type="text"
             placeholder="Top text"
             name="topText"
+            value={meme.topText}
           />
           <input
             onChange={changeText}
@@ -44,6 +51,7 @@ const Meme = () => {
             type="text"
             placeholder="Bottom text"
             name="bottomText"
+            value={meme.bottomText}
           />
         </div>
 
