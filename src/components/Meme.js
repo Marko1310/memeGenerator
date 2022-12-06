@@ -21,15 +21,29 @@ const Meme = () => {
     console.log(meme.randomImage);
   };
 
+  const changeText = function (event) {
+    setMeme((meme) => {
+      return { ...meme, [event.target.name]: event.target.value };
+    });
+  };
+
   return (
     <div className="form--container">
       <div className="form">
         <div className="form--input">
-          <input className="form--field" type="text" placeholder="Top text" />
           <input
+            onChange={changeText}
+            className="form--field"
+            type="text"
+            placeholder="Top text"
+            name="topText"
+          />
+          <input
+            onChange={changeText}
             className="form--field"
             type="text"
             placeholder="Bottom text"
+            name="bottomText"
           />
         </div>
 
@@ -40,7 +54,12 @@ const Meme = () => {
           value="Get new meme image"
         ></input>
       </div>
-      <img className="meme--image" src={meme.randomImage} alt="meme" />
+
+      <div className="meme">
+        <img src={meme.randomImage} className="meme--image" />
+        <h2 className="meme--text top">{meme.topText}</h2>
+        <h2 className="meme--text bottom">{meme.bottomText}</h2>
+      </div>
     </div>
   );
 };
