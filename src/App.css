@@ -33,6 +33,13 @@ header {
   margin-left: auto;
 }
 
+.form--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* max-width: 400px; */
+}
+
 .form {
   padding: 30px;
 }
@@ -62,12 +69,6 @@ header {
   font-weight: 700;
 }
 
-.form--container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .meme--image {
   padding: 0px 30px;
   max-width: 100%;
@@ -75,6 +76,8 @@ header {
 
 .meme {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .meme--image {
