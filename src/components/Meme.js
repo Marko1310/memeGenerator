@@ -22,6 +22,7 @@ const Meme = () => {
 
     const length = allMemeImages.length;
     const num = Math.floor(Math.random() * length);
+
     setMeme((meme) => {
       return { ...meme, randomImage: allMemeImages[num].url };
     });
