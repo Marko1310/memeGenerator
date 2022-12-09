@@ -2,22 +2,24 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const Meme = () => {
+  // state for each meme image with top and bottom text
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     randomImage: "https://i.imgflip.com/1bh3.jpg",
   });
 
+  // state for all memes (array)
   const [allMemeImages, setAllMemeImages] = useState([]);
 
-  console.log(allMemeImages);
-
+  // fetch data on first render
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
       .then((data) => setAllMemeImages(data.data.memes));
   }, []);
 
+  // erase the text, change the state of the meme image by randomly choosing an image from the array
   let getMemeImage = function () {
     meme.topText = "";
     meme.bottomText = "";
@@ -30,6 +32,7 @@ const Meme = () => {
     });
   };
 
+  // change text
   const changeText = function (event) {
     setMeme((meme) => {
       return { ...meme, [event.target.name]: event.target.value };
