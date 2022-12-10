@@ -49,9 +49,7 @@ const Meme = () => {
     const newArray = allMemeImages;
 
     for (let i = 0; i < newArray.length; i++) {
-      if (newArray[i].id === id) {
-        newArray[i].clicked = true;
-      }
+      newArray[i].clicked = newArray[i].id === id ? true : false;
     }
     setAllMemeImages(newArray);
   };

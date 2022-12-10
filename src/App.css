@@ -116,7 +116,7 @@ header {
 .grid--container {
   display: grid;
   margin: 100px;
-  gap: 20px;
+  gap: 40px;
   grid-template-columns: repeat(3, 1fr);
 }
 
